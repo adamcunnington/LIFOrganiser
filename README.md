@@ -36,7 +36,7 @@ _src = "/home/ac/Downloads"
 _dst = "/home/ac/Dropbox/Documents/Education/Tutorials/LearnItFirst"
 _avi_dst = "/media/ADAM-PC/Tutorials/LearnItFirst"
 
-ssas = liforganiser.Course.get(165, logging.ERROR)
+ssas = liforganiser.Course.get(165, logging.INFO)
 ssas.organise(_src, _dst, chapter_pattern=r"SSAS2008_Chapter(\d+)(?:.zip|)",
               lesson_pattern=r"Ch\d+_(\d+)(?:_|)([^\.]*)(?:\.\w+|)",
               avi_dst=_avi_dst, completed_prefix="DONE")
@@ -51,7 +51,7 @@ tsql.organise(_src, _dst, chapter_pattern=r"TSQL2008_Chapter(\d+)(?:.zip|)",
               lesson_pattern=r"Ch\d+_(\d+)(?:_|)([^\.]*)(?:\.\w+|)",
               completed_prefix="DONE")
               
-sqlq = liforganiser.Course.get(160, logging.ERROR)
+sqlq = liforganiser.Course.get(160, logging.INFO)
 sqlq.organise(_src, _dst, chapter_pattern=r"SQLQueries2008_Chapter(\d+)(?:.zip|)",
               lesson_pattern=r"\d+_(\d+)(?:-|)([^\.]*)(?:\.\w+|)",
               completed_prefix="DONE")
