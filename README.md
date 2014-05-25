@@ -23,8 +23,7 @@ For more information, see:
 
 
 ## Video Demonstration
-Coming soon.
-
+To do
 
 ## Usage
 ```python
