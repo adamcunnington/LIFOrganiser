@@ -40,7 +40,7 @@ ssis.organise(_src, _dst, chapter_pattern=r"SSIS2008_Chapter(\d+)(?:.zip|)",
               lesson_pattern=r"\d+_(\d+)(?:-|)([^\.]*)(?:\.\w+|)",
               avi_dst=_avi_dst, completed_prefix="DONE")
               
-tsql = liforganiser.Course.get(160)
+tsql = liforganiser.Course.get(161)
 tsql.organise(_src, _dst, chapter_pattern=r"TSQL2008_Chapter(\d+)(?:.zip|)",
               lesson_pattern=r"Ch\d+_(\d+)(?:_|)([^\.]*)(?:\.\w+|)",
               avi_dst=_avi_dst, completed_prefix="DONE")
