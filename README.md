@@ -24,6 +24,8 @@ For more information, see:
 
 ## Usage
 ```python
+import logging
+
 import liforganiser
 
 _src = "/home/ac/Downloads"
@@ -33,23 +35,26 @@ _avi_dst = "/media/ADAM-PC/Tutorials/LearnItFirst"
 ssas = liforganiser.Course.get(165)
 ssas.organise(_src, _dst, chapter_pattern=r"SSAS2008_Chapter(\d+)(?:.zip|)",
               lesson_pattern=r"Ch\d+_(\d+)(?:_|)([^\.]*)(?:\.\w+|)",
-              avi_dst=_avi_dst, completed_prefix="DONE")
+              avi_dst=_avi_dst, completed_prefix="DONE",
+              stderr_level_override=logging.ERROR)
               
 ssis = liforganiser.Course.get(158)
 ssis.organise(_src, _dst, chapter_pattern=r"SSIS2008_Chapter(\d+)(?:.zip|)",
               lesson_pattern=r"\d+_(\d+)(?:-|)([^\.]*)(?:\.\w+|)",
-              avi_dst=_avi_dst, completed_prefix="DONE")
+              avi_dst=_avi_dst,)
               
 tsql = liforganiser.Course.get(161)
 tsql.organise(_src, _dst, chapter_pattern=r"TSQL2008_Chapter(\d+)(?:.zip|)",
               lesson_pattern=r"Ch\d+_(\d+)(?:_|)([^\.]*)(?:\.\w+|)",
-              avi_dst=_avi_dst, completed_prefix="DONE")
+              completed_prefix="DONE")
               
 sqlq = liforganiser.Course.get(160)
 sqlq.organise(_src, _dst, chapter_pattern=r"SQLQueries2008_Chapter(\d+)(?:.zip|)",
               lesson_pattern=r"\d+_(\d+)(?:-|)([^\.]*)(?:\.\w+|)",
-              avi_dst=_avi_dst, completed_prefix="DONE")
+              completed_prefix="DONE", stderr_level_override=logging.ERROR)
 ```
+
+Check the source for complete documentation - each publically exposed name is documented.
 
 ## Video Demonstration
 Coming soon.
