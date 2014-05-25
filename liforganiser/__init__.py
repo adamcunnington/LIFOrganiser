@@ -111,11 +111,12 @@ class Course(object):
         func(path)
 
     @classmethod
-    def _transform_name(cls, num, name, chapter_num=None):
+    def _transform_name(cls, num, name, course_id=None, chapter_num=None):
         for char in _CHAR_REPLACEMENTS:
             name = name.replace(char, _CHAR_REPLACEMENTS[char])
         if chapter_num is not None:
-            return ("ch%02dl%02d - %s" % (chapter_num, num, name))
+            return ("s%03dch%02dl%02d - %s" % (course_id, chapter_num, num,
+                                               name))
         return "%02d - %s" % (num, name)
 
     @classmethod
@@ -145,7 +146,7 @@ class Course(object):
                             "error was encountered; %s" % message)
             return
         _logger.info("Data for course ID, %s, was successfully loaded "
-                             "from the JSON file" % course_id)
+                     "from the JSON file" % course_id)
         return Course(course["course_id"], course["title"], chapters,
                       stderr_level_override)
 
@@ -239,7 +240,7 @@ class Course(object):
                 lesson_num = int(first_div.string.strip()[start_slice:])
                 raw_name = second_div.a.string.strip()
                 lesson_name = cls._transform_name(lesson_num, raw_name,
-                                                  chapter_num)
+                                                  course_id, chapter_num)
                 lessons[lesson_num] = _Lesson(lesson_num, lesson_name)
             chapters[chapter_num] = _Chapter(chapter_num, chapter_name,
                                              lessons)
@@ -430,6 +431,7 @@ class Course(object):
                                                 "file will be non-descript" %
                                                 file_name)
                             name = (self._transform_name(num, description,
+                                                         self.course_id,
                                                          chapter_num) +
                                     os.path.extsep + ext)
                             new_file_path = os.path.join(dst, dst_rel_path,
