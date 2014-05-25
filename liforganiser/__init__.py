@@ -21,7 +21,7 @@ script without arguments.
 """
 
 from urllib import parse
-# TODO: import argparse.
+import argparse
 import json
 import logging
 import os
@@ -54,7 +54,7 @@ _logger = logging.getLogger(__name__)
 _logger.setLevel(logging.DEBUG)
 _stderr_handler = logging.StreamHandler()
 _stderr_handler.setFormatter(logging.Formatter(_format, "%H:%M:%S"))
-_DEFAULT_LEVEL = logging.INFO
+_DEFAULT_LEVEL = logging.ERROR
 _logger.addHandler(_stderr_handler)
 _ABSENT = object()
 
@@ -114,8 +114,8 @@ class Course(object):
     def _transform_name(cls, num, name, course_id=None, chapter_num=None):
         for char in _CHAR_REPLACEMENTS:
             name = name.replace(char, _CHAR_REPLACEMENTS[char])
-        if chapter_num is not None:
-            return ("s%03dch%02dl%02d - %s" % (course_id, chapter_num, num,
+        if course_id is not None:
+            return ("c%03dch%02dl%02d - %s" % (course_id, chapter_num, num,
                                                name))
         return "%02d - %s" % (num, name)
 
@@ -305,9 +305,9 @@ class Course(object):
             chapter directories or zip files
         dst -- the full path to the destination directory which all valid,
             lesson-related files will be moved to by default
-        chapter_pattern -- a regex pattern representing a valid chapter name.
-            Bear in mind that both directories and zip files should likely be
-            accepted
+        chapter_pattern -- a regex pattern representing a valid chapter name,
+            taking into account that both directories and zip files should
+            likely be accepted
         lesson_pattern -- a regex pattern representing a valid lesson file that
             should be matched to scraped course data and renamed accordingly
         avi_dst -- the full path to the destination directory in which AVI
@@ -322,6 +322,8 @@ class Course(object):
             seperator) that should be ignored when renaming and moving files
             (default ("html", ))
         """
+        print(chapter_pattern)
+        print(lesson_pattern)
         if not os.path.isdir(src):
             _logger.critical("Invalid or non-existent source directory, %s." %
                              src)
@@ -494,3 +496,66 @@ class _Lesson(object):
     def __init__(self, num, name):
         self.num = num
         self.name = name
+
+
+def _main():
+    parser = argparse.ArgumentParser(description="Scrape the course, chapter "
+                                     "and lesson data from LearnItFirst.com "
+                                     "and then organise, move and rename "
+                                     "pre-downloaded course chapters "
+                                     "accordingly.")
+    parser.add_argument("course_id", help="the unique ID integer (between 100 "
+                        "and 999) of the course", type=int)
+    parser.add_argument("src", help="the full path to the source directory "
+                        "containing the course chapter directories or zip "
+                        "files")
+    parser.add_argument("dst", help="the full path to the destination "
+                        "directory which all valid, lesson-related files will "
+                        "be moved to by default")
+    parser.add_argument("chapter_pattern", help="a regex pattern representing "
+                        "a valid chapter name, taking into account that both "
+                        "directories and zip files should likely be accepted")
+    parser.add_argument("lesson_pattern", help="a regex pattern representing "
+                        "a valid lesson file that should be matched to "
+                        "scraped course data and renamed accordingly")
+    _output_group = parser.add_mutually_exclusive_group()
+    _output_group.add_argument("-v", "--verbosity", action="count", default=0,
+                               help="increase output verbosity")
+    _output_group.add_argument("-q", "--quiet", action="count", default=0,
+                               help="decrease output verbosity")
+    parser.add_argument("-a", "--avidst", help="the full path to the "
+                        "destination directory in which AVI files only should "
+                        "be moved to", default=None)
+    parser.add_argument("-p", "--pdfdst", help="the full path to the "
+                        "destination directory in which PDF files only should "
+                        "be moved to", default=None)
+    parser.add_argument("-c", "--completedprefix", help="a prefix to be "
+                        "prepended to the old directories / zip files in "
+                        "which the contents have been succesfully moved, so "
+                        "that re-calling organise will not match and attempt "
+                        "to organise them again", default=None)
+    parser.add_argument("-i", "--ignoredexts", help="file extensions  "
+                        "(without the seperator) that should be ignored when "
+                        "renaming and moving files", default=("html", ),
+                        nargs="*")
+    args = parser.parse_args()
+    _logginglevels = {
+        -2: logging.DEBUG,
+        -1: logging.INFO,
+        1: logging.WARNING,
+        2: logging.CRITICAL,
+        3: logging.NOTSET
+    }
+    level = None
+    if args.quiet:
+        level = _logginglevels[min(max(_logginglevels), args.quiet)]
+    elif args.verbosity:
+        level = _logginglevels[max(min(_logginglevels), -args.verbosity)]
+    _course = Course.get(args.course_id, level)
+    _course.organise(args.src, args.dst, args.chapter_pattern,
+                     args.lesson_pattern, args.avidst, args.pdfdst,
+                     args.completedprefix, args.ignoredexts)
+
+
+if __name__ == "__main__":
+    _main()
