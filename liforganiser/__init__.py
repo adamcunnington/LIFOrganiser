@@ -114,8 +114,8 @@ class Course(object):
     def _transform_name(cls, num, name, chapter_num=None):
         for char in _CHAR_REPLACEMENTS:
             name = name.replace(char, _CHAR_REPLACEMENTS[char])
-            if chapter_num is not None:
-                return ("ch%02dl%02d - %s" % (chapter_num, num, name))
+        if chapter_num is not None:
+            return ("ch%02dl%02d - %s" % (chapter_num, num, name))
         return "%02d - %s" % (num, name)
 
     @classmethod
@@ -144,6 +144,8 @@ class Course(object):
                             "expected and has probably been tampered with. An "
                             "error was encountered; %s" % message)
             return
+        _logger.info("Data for course ID, %s, was successfully loaded "
+                             "from the JSON file" % course_id)
         return Course(course["course_id"], course["title"], chapters,
                       stderr_level_override)
 
@@ -161,6 +163,8 @@ class Course(object):
             level of logging verbosity in accordance with logging levels.  If
             no value is passed, logging.INFO (20) will be used (default None)
         """
+        _logger.debug("Attempting to get data for course ID, %s, by scraping "
+                      "LearnItFirst.com" % course_id)
         if stderr_level_override is not _ABSENT:
             _stderr_handler.setLevel(stderr_level_override or _DEFAULT_LEVEL)
         headers = {"User-Agent": "Chromium/Linux"}
@@ -239,6 +243,8 @@ class Course(object):
                 lessons[lesson_num] = _Lesson(lesson_num, lesson_name)
             chapters[chapter_num] = _Chapter(chapter_num, chapter_name,
                                              lessons)
+        _logger.info("Data for course ID, %s, was successfully scraped from "
+                     "LearnItFirst.com" % course_id)
         course = Course(course_id, course_title, chapters, _ABSENT)
         course.dump()
         return course
@@ -263,14 +269,8 @@ class Course(object):
             _logger.debug("Existing JSON file found at %s" % json_file_path)
             result = cls._from_json(course_id, _ABSENT)
             if result is not None:
-                _logger.info("Data for course ID, %s, was successfully loaded "
-                             "from the JSON file" % course_id)
                 return result
-        _logger.debug("Attempting to get data for course ID, %s, by scraping "
-                      "LearnItFirst.com" % course_id)
         course = cls.from_url(course_id, _ABSENT)
-        _logger.info("Data for course ID, %s, was successfully scraped from "
-                     "LearnItFirst.com" % course_id)
         return course
 
     def dump(self):
@@ -354,20 +354,21 @@ class Course(object):
                 continue
             _logger.debug("A valid chapter directory has been found at %s." %
                           original_path)
+            chapter_num = int(chapter_match.group(1))
             if zipfile.is_zipfile(original_path):
                 if not os.path.isdir(temp_dir_path):
                     _logger.info("Temporary directory being created for "
                                  "extracted zipfiles, %s." % temp_dir_path)
                     os.mkdir(temp_dir_path)
                 path = os.path.join(temp_dir_path, name)
-                _logger.info("Chapter was found to be a zipfile and is being "
-                             "extracted. This may take a while...")
+                _logger.info("Chapter number, %s, was found to be a zipfile "
+                             "and is being extracted. This may take a "
+                             "while..." % chapter_num)
                 zipfile.ZipFile(original_path).extractall(path)
             elif os.path.isfile(original_path):
                 continue
             else:
                 path = original_path
-            chapter_num = int(chapter_match.group(1))
             chapter = self.chapters[chapter_num]
             files = []
             contents_path = None
@@ -387,9 +388,11 @@ class Course(object):
                     else:
                         ext = ""
                     file_path = os.path.join(root, file_name)
-                    dst_rel_path = os.path.join(self.title, chapter.name,
-                                                os.path.relpath(root,
-                                                                contents_path))
+                    dst_rel_path = os.path.join(self.title, chapter.name)
+                    if root != contents_path:
+                        # Declare variable for readable line length.
+                        rel_path = os.path.relpath(root, contents_path)
+                        dst_rel_path = os.path.join(dst_rel_path, rel_path)
                     lesson_match = re.match(lesson_pattern, file_name)
                     if lesson_match is not None:
                         _logger.debug("A valid lesson file that matches the "
@@ -410,11 +413,13 @@ class Course(object):
                                 break
                             name = lesson.name + os.path.extsep + ext
                             if ext == "avi":
+                                print("dst_rel_path = %s" % dst_rel_path)
                                 new_file_path = os.path.join(avi_dst,
                                                              dst_rel_path,
                                                              name)
+                                print("new_file_path = %s" % new_file_path)
                             elif ext == "pdf":
-                                new_file_path = os.path.join(avi_dst,
+                                new_file_path = os.path.join(pdf_dst,
                                                              dst_rel_path,
                                                              name)
                         else:
@@ -448,7 +453,12 @@ class Course(object):
             for _file in files:
                 _logger.info("Moving and renaming %s to %s" %
                              (_file.file_path, _file.new_file_path))
-                os.renames(_file.file_path, _file.new_file_path)
+                # Use shutil in case the user is moving files to a new file
+                # system, i.e. an external HDD.
+                dir_path = os.path.dirname(_file.new_file_path)
+                if not os.path.isdir(dir_path):
+                    os.makedirs(dir_path)
+                shutil.move(_file.file_path, _file.new_file_path)
             if completed_prefix is not None:
                 head, tail = os.path.split(original_path)
                 _logger.debug("Prepending \"DONE\" to chapter number, %s's "
