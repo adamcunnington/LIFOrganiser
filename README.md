@@ -32,26 +32,25 @@ _src = "/home/ac/Downloads"
 _dst = "/home/ac/Dropbox/Documents/Education/Tutorials/LearnItFirst"
 _avi_dst = "/media/ADAM-PC/Tutorials/LearnItFirst"
 
-ssas = liforganiser.Course.get(165)
+ssas = liforganiser.Course.get(165, logging.ERROR)
 ssas.organise(_src, _dst, chapter_pattern=r"SSAS2008_Chapter(\d+)(?:.zip|)",
               lesson_pattern=r"Ch\d+_(\d+)(?:_|)([^\.]*)(?:\.\w+|)",
-              avi_dst=_avi_dst, completed_prefix="DONE",
-              stderr_level_override=logging.ERROR)
+              avi_dst=_avi_dst, completed_prefix="DONE")
               
 ssis = liforganiser.Course.get(158)
 ssis.organise(_src, _dst, chapter_pattern=r"SSIS2008_Chapter(\d+)(?:.zip|)",
               lesson_pattern=r"\d+_(\d+)(?:-|)([^\.]*)(?:\.\w+|)",
-              avi_dst=_avi_dst,)
+              avi_dst=_avi_dst)
               
 tsql = liforganiser.Course.get(161)
 tsql.organise(_src, _dst, chapter_pattern=r"TSQL2008_Chapter(\d+)(?:.zip|)",
               lesson_pattern=r"Ch\d+_(\d+)(?:_|)([^\.]*)(?:\.\w+|)",
               completed_prefix="DONE")
               
-sqlq = liforganiser.Course.get(160)
+sqlq = liforganiser.Course.get(160, logging.ERROR)
 sqlq.organise(_src, _dst, chapter_pattern=r"SQLQueries2008_Chapter(\d+)(?:.zip|)",
               lesson_pattern=r"\d+_(\d+)(?:-|)([^\.]*)(?:\.\w+|)",
-              completed_prefix="DONE", stderr_level_override=logging.ERROR)
+              completed_prefix="DONE")
 ```
 
 Check the source for complete documentation - each publically exposed name is documented.
