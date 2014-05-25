@@ -12,6 +12,7 @@ However, they are named fairly non-descriptively compared with the disciplined n
 
 ## Installation
 1. [Download ZIP](https://github.com/adamcunnington/LIFOrganiser/archive/master.zip) & Unzip or ```git clone https://github.com/adamcunnington/LIFOrganiser.git```
+2. CD into LIFOrganiser
 3. ```python setup.py install```
 
 You may need administrator privileges for step 3. What you do here depends on your operating system. For example in Ubuntu you would say sudo ```python setup.py install``` To bypass the need for administrator privileges, you may be able to make use of the ```--user``` flag. In this way you can install the package only for the current user.
