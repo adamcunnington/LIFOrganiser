@@ -31,12 +31,12 @@ _dst = "/home/ac/Dropbox/Documents/Education/Tutorials/LearnItFirst"
 _avi_dst = "/media/ADAM-PC/Tutorials/LearnItFirst"
 
 ssas = liforganiser.Course.get(165)
-ssas.organise(_src, _dst, chapter_pattern=r"SSAS2008__Chapter(\d+)(?:.zip|)",
+ssas.organise(_src, _dst, chapter_pattern=r"SSAS2008_Chapter(\d+)(?:.zip|)",
               lesson_pattern=r"Ch\d+_(\d+)(?:_|)([^\.]*)(?:\.\w+|)",
               avi_dst=_avi_dst, completed_prefix="DONE")
               
 ssis = liforganiser.Course.get(158)
-ssis.organise(_src, _dst, chapter_pattern=r"SSIS2008__Chapter(\d+)(?:.zip|)",
+ssis.organise(_src, _dst, chapter_pattern=r"SSIS2008_Chapter(\d+)(?:.zip|)",
               lesson_pattern=r"\d+_(\d+)(?:-|)([^\.]*)(?:\.\w+|)",
               avi_dst=_avi_dst, completed_prefix="DONE")
 ```
