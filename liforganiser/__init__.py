@@ -239,7 +239,9 @@ class Course(object):
                 lessons[lesson_num] = _Lesson(lesson_num, lesson_name)
             chapters[chapter_num] = _Chapter(chapter_num, chapter_name,
                                              lessons)
-        return Course(course_id, course_title, chapters, _ABSENT)
+        course = Course(course_id, course_title, chapters, _ABSENT)
+        course.dump()
+        return course
 
     @classmethod
     def get(cls, course_id, stderr_level_override=None):
@@ -269,7 +271,6 @@ class Course(object):
         course = cls.from_url(course_id, _ABSENT)
         _logger.info("Data for course ID, %s, was successfully scraped from "
                      "LearnItFirst.com" % course_id)
-        course.dump()
         return course
 
     def dump(self):
@@ -481,14 +482,3 @@ class _Lesson(object):
     def __init__(self, num, name):
         self.num = num
         self.name = name
-
-
-"""Example Usage:
-import liforganiser
-ssas = liforganiser.Course.get(165)
-ssas.organise("/home/ac/Downloads",
-              "/home/ac/Dropbox/Documents/Education/Tutorials/LearnItFirst",
-              r"SSAS2008__Chapter(\d+)(?:.zip|)",
-              r"Ch\d+_(\d+)(?:_|)([^\.]*)(?:\.\w+|)",
-              "/media/ADAM-PC/Tutorials/LearnItFirst", completed_prefix="DONE")
-"""
