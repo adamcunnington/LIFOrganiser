@@ -22,6 +22,10 @@ For more information, see:
 * [Python 2.7 Documentation: Installing Python Modules](https://docs.python.org/2.7/install/index.html)
 
 
+## Video Demonstration
+Coming soon.
+
+
 ## Usage
 ```python
 import logging
@@ -57,7 +61,7 @@ Check the source for complete documentation - each publically exposed name is do
 
 
 ## CLI Usage
-```bash
+```
 usage: __init__.py [-h] [-v | -q] [-a AVIDST] [-p PDFDST] [-c COMPLETEDPREFIX]
                    [-i [IGNOREDEXTS [IGNOREDEXTS ...]]]
                    course_id src dst chapter_pattern lesson_pattern
@@ -99,6 +103,3 @@ optional arguments:
                         file extensions (without the seperator) that should be
                         ignored when renaming and moving files
 ```
-
-## Video Demonstration
-Coming soon.
