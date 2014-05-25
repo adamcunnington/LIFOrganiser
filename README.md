@@ -55,5 +55,50 @@ sqlq.organise(_src, _dst, chapter_pattern=r"SQLQueries2008_Chapter(\d+)(?:.zip|)
 
 Check the source for complete documentation - each publically exposed name is documented.
 
+
+## CLI Usage
+```bash
+usage: __init__.py [-h] [-v | -q] [-a AVIDST] [-p PDFDST] [-c COMPLETEDPREFIX]
+                   [-i [IGNOREDEXTS [IGNOREDEXTS ...]]]
+                   course_id src dst chapter_pattern lesson_pattern
+
+Scrape the course, chapter and lesson data from LearnItFirst.com and then
+organise, move and rename pre-downloaded course chapters accordingly.
+
+positional arguments:
+  course_id             the unique ID integer (between 100 and 999) of the
+                        course
+  src                   the full path to the source directory containing the
+                        course chapter directories or zip files
+  dst                   the full path to the destination directory which all
+                        valid, lesson-related files will be moved to by
+                        default
+  chapter_pattern       a regex pattern representing a valid chapter name,
+                        taking into account that both directories and zip
+                        files should likely be accepted
+  lesson_pattern        a regex pattern representing a valid lesson file that
+                        should be matched to scraped course data and renamed
+                        accordingly
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -v, --verbosity       increase output verbosity
+  -q, --quiet           decrease output verbosity
+  -a AVIDST, --avidst AVIDST
+                        the full path to the destination directory in which
+                        AVI files only should be moved to
+  -p PDFDST, --pdfdst PDFDST
+                        the full path to the destination directory in which
+                        PDF files only should be moved to
+  -c COMPLETEDPREFIX, --completedprefix COMPLETEDPREFIX
+                        a prefix to be prepended to the old directories / zip
+                        files in which the contents have been succesfully
+                        moved, so that re-calling organise will not match and
+                        attempt to organise them again
+  -i [IGNOREDEXTS [IGNOREDEXTS ...]], --ignoredexts [IGNOREDEXTS [IGNOREDEXTS ...]]
+                        file extensions (without the seperator) that should be
+                        ignored when renaming and moving files
+```
+
 ## Video Demonstration
 Coming soon.
