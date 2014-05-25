@@ -161,7 +161,8 @@ class Course(object):
             level of logging verbosity in accordance with logging levels.  If
             no value is passed, logging.INFO (20) will be used (default None)
         """
-        _stderr_handler.setLevel(stderr_level_override or _DEFAULT_LEVEL)
+        if stderr_level_override is not _ABSENT:
+            _stderr_handler.setLevel(stderr_level_override or _DEFAULT_LEVEL)
         headers = {"User-Agent": "Chromium/Linux"}
         url = "http://www.learnitfirst.com/Course/%s/default.aspx" % course_id
         _logger.debug("Making a HTTP request with custom headers as the "
@@ -201,17 +202,33 @@ class Course(object):
         soup = bs4.BeautifulSoup(requests.get(url, headers=headers).text,
                                  "lxml")
         chapters = {}
-        for chapter_div in soup.find_all("div", "chapterTitle"):
+        chapter_divs = soup.find_all("div", "chapterTitle")
+        if not chapter_divs:
+            _logger.critical("The TheBigList.aspx page has changed structure "
+                             "and chapter data cannot be scraped. An "
+                             "exception will be raised.")
+            raise LearnItFirstError("The TheBigList.aspx page has changed "
+                                    "structure and chapter data cannot be "
+                                    "scraped.")
+        for chapter_div in chapter_divs:
             # Declare variable for readable line length.
             string = chapter_div.h2.b.string.strip()
-            chapter_num = int(re.match(r"_Chapter\s+(\d+):", string).group(1))
+            chapter_num = int(re.match(r"Chapter\s+(\d+):", string).group(1))
             # Declare variable for readable line length.
             raw_name = chapter_div.h2.a.string.strip()
             chapter_name = cls._transform_name(chapter_num, raw_name)
             lessons = {}
             # Declare variable for readable line length.
             next_div = chapter_div.find_next_sibling("div")
-            for lesson_div in next_div.find_all("div", "chapterBorder"):
+            lesson_divs = next_div.find_all("div", "chapterBorder")
+            if not lesson_divs:
+                _logger.critical("The TheBigList.aspx page has changed "
+                                 "structure and lesson data cannot be "
+                                 "scraped.  An exception will be raised.")
+                raise LearnItFirstError("The TheBigList.aspx page has changed "
+                                        "structure and lesson data cannot be "
+                                        "scraped.")
+            for lesson_div in lesson_divs:
                 # Declare variable for readable line length.
                 start_slice = len("%s." % chapter_num)
                 first_div, second_div = lesson_div.find_all("div", limit=2)
@@ -220,22 +237,8 @@ class Course(object):
                 lesson_name = cls._transform_name(lesson_num, raw_name,
                                                   chapter_num)
                 lessons[lesson_num] = _Lesson(lesson_num, lesson_name)
-            else:
-                _logger.critical("The TheBigList.aspx page has changed "
-                                 "structure and lesson data cannot be "
-                                 "scraped.  An exception will be raised.")
-                raise LearnItFirstError("The TheBigList.aspx page has changed "
-                                        "structure and lesson data cannot be "
-                                        "scraped.")
             chapters[chapter_num] = _Chapter(chapter_num, chapter_name,
                                              lessons)
-        else:
-            _logger.critical("The TheBigList.aspx page has changed structure "
-                             "and chapter data cannot be scraped. An "
-                             "exception will be raised.")
-            raise LearnItFirstError("The TheBigList.aspx page has changed "
-                                    "structure and chapter data cannot be "
-                                    "scraped.")
         return Course(course_id, course_title, chapters, _ABSENT)
 
     @classmethod
