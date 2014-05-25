@@ -481,14 +481,3 @@ class _Lesson(object):
     def __init__(self, num, name):
         self.num = num
         self.name = name
-
-
-"""Example Usage:
-import liforganiser
-ssas = liforganiser.Course.get(165)
-ssas.organise("/home/ac/Downloads",
-              "/home/ac/Dropbox/Documents/Education/Tutorials/LearnItFirst",
-              r"SSAS2008__Chapter(\d+)(?:.zip|)",
-              r"Ch\d+_(\d+)(?:_|)([^\.]*)(?:\.\w+|)",
-              "/media/ADAM-PC/Tutorials/LearnItFirst", completed_prefix="DONE")
-"""
