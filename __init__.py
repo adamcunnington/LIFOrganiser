@@ -239,7 +239,9 @@ class Course(object):
                 lessons[lesson_num] = _Lesson(lesson_num, lesson_name)
             chapters[chapter_num] = _Chapter(chapter_num, chapter_name,
                                              lessons)
-        return Course(course_id, course_title, chapters, _ABSENT)
+        course = Course(course_id, course_title, chapters, _ABSENT)
+        course.dump()
+        return course
 
     @classmethod
     def get(cls, course_id, stderr_level_override=None):
@@ -269,7 +271,6 @@ class Course(object):
         course = cls.from_url(course_id, _ABSENT)
         _logger.info("Data for course ID, %s, was successfully scraped from "
                      "LearnItFirst.com" % course_id)
-        course.dump()
         return course
 
     def dump(self):
