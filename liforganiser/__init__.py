@@ -103,18 +103,25 @@ class Course(object):
         self.title = title
         self.chapters = chapters
         if stderr_level_override is not _ABSENT:
+            # _ABSENT refers to an object of certain identity and this value
+            # will be passed to __init__ when cls.from_url or cls.get are
+            # responsible for instantiating the class.  Passed to avoid setting
+            # the level of the log handler twice.
             _stderr_handler.setLevel(stderr_level_override or _DEFAULT_LEVEL)
 
     @classmethod
     def _remove_readonly(cls, func, path, exc_info):
+        # shutil.rmtree fails on readonly files; this function is called when
+        # an exception is raised during the tree removal.
         os.chmod(path, stat.S_IWRITE)
-        func(path)
+        func(path)  # This ensures execution continues
 
     @classmethod
     def _transform_name(cls, num, name, course_id=None, chapter_num=None):
         for char in _CHAR_REPLACEMENTS:
             name = name.replace(char, _CHAR_REPLACEMENTS[char])
         if course_id is not None:
+            # c, ch and l represent course, chapter and lesson respectively.
             return ("c%03dch%02dl%02d - %s" % (course_id, chapter_num, num,
                                                name))
         return "%02d - %s" % (num, name)
@@ -164,6 +171,10 @@ class Course(object):
             level of logging verbosity in accordance with logging levels.  If
             no value is passed, logging.INFO (20) will be used (default None)
         """
+        # This whole function is full of nasty web scraping as the current HTML
+        # structure of the website does not lead to logically systematic
+        # scraping.  It will break if the TheBigList.aspx page structure is
+        # modified.  Exceptions are raised accordingly.
         _logger.debug("Attempting to get data for course ID, %s, by scraping "
                       "LearnItFirst.com" % course_id)
         if stderr_level_override is not _ABSENT:
@@ -357,6 +368,11 @@ class Course(object):
                           original_path)
             chapter_num = int(chapter_match.group(1))
             if zipfile.is_zipfile(original_path):
+                # Whilst it may seem unnecessary to check the existence of the
+                # temporary directory for each valid chapter found, it is
+                # necessary as extraction can take a long time and it is not
+                # incomprehensible for the user to delete the directory during
+                # this time.
                 if not os.path.isdir(temp_dir_path):
                     _logger.info("Temporary directory being created for "
                                  "extracted zipfiles, %s." % temp_dir_path)
