@@ -322,8 +322,6 @@ class Course(object):
             seperator) that should be ignored when renaming and moving files
             (default ("html", ))
         """
-        print(chapter_pattern)
-        print(lesson_pattern)
         if not os.path.isdir(src):
             _logger.critical("Invalid or non-existent source directory, %s." %
                              src)
@@ -416,11 +414,9 @@ class Course(object):
                                 break
                             name = lesson.name + os.path.extsep + ext
                             if ext == "avi":
-                                print("dst_rel_path = %s" % dst_rel_path)
                                 new_file_path = os.path.join(avi_dst,
                                                              dst_rel_path,
                                                              name)
-                                print("new_file_path = %s" % new_file_path)
                             elif ext == "pdf":
                                 new_file_path = os.path.join(pdf_dst,
                                                              dst_rel_path,
