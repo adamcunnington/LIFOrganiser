@@ -22,7 +22,7 @@ For more information, see:
 * [Python 2.7 Documentation: Installing Python Modules](https://docs.python.org/2.7/install/index.html)
 
 
-## Usage
+## Example Usage
 ```python
 import logging
 
