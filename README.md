@@ -22,9 +22,6 @@ For more information, see:
 * [Python 2.7 Documentation: Installing Python Modules](https://docs.python.org/2.7/install/index.html)
 
 
-## Video Demonstration
-To do
-
 ## Usage
 ```python
 import logging
