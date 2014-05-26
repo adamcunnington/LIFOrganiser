@@ -40,12 +40,13 @@ _CHAR_REPLACEMENTS = {
     "/": " & ",
     " - ": "; "
 }
-_JSON_DIR_PATH = os.path.join(os.path.dirname(__file__), "course_data")
+_PACKAGE_DIR = os.path.dirname(__file__)
+_JSON_DIR_PATH = os.path.join(_PACKAGE_DIR, "course_data")
 if not os.path.isdir(_JSON_DIR_PATH):
     os.mkdir(_JSON_DIR_PATH)
 _JSON_PATH_FORMAT = os.path.join(_JSON_DIR_PATH, "%s" + os.extsep + "json")
 # Declare variable for readable line length.
-_log_path = os.path.join(os.path.dirname(__file__), "output" + os.path.extsep +
+_log_path = os.path.join(_PACKAGE_DIR, "output" + os.path.extsep +
                          "log")
 _format = "%(asctime)s (%(levelname)s) -> %(message)s"
 logging.basicConfig(filename=_log_path, format=_format,
