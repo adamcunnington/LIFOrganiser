@@ -1,0 +1,626 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"Learn",
+				"LearnItFirstError"
+			],
+			[
+				"LIF",
+				"LearnItFirstError"
+			],
+			[
+				"JSON",
+				"_JSON_FILE_FORMAT"
+			],
+			[
+				"pdfs",
+				"pdf_dst_dir"
+			],
+			[
+				"pdf_",
+				"pdf_dst_dir"
+			],
+			[
+				"video",
+				"videos"
+			],
+			[
+				"file_or",
+				"file_or_directory"
+			],
+			[
+				"source",
+				"source_directory"
+			],
+			[
+				"cours",
+				"course_id"
+			],
+			[
+				"extra",
+				"extracted_location"
+			],
+			[
+				"dest",
+				"destination_directory"
+			],
+			[
+				"Temporary",
+				"TemporaryRedirectWarning"
+			],
+			[
+				"enc",
+				"encoded_URL"
+			],
+			[
+				"response",
+				"response_code"
+			],
+			[
+				"first",
+				"first_parsed_URL"
+			],
+			[
+				"final_URL",
+				"final_URL_path"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 98.0,
+		"selected_items":
+		[
+			[
+				"project",
+				"Project: Close"
+			],
+			[
+				"python3",
+				"Set Syntax: Python3"
+			],
+			[
+				"sidebar",
+				"View: Toggle Side Bar"
+			],
+			[
+				"python",
+				"Set Syntax: Python3"
+			],
+			[
+				"text",
+				"Set Syntax: Plain Text"
+			],
+			[
+				"python 3",
+				"Set Syntax: Python3"
+			],
+			[
+				"lint",
+				"User: Python Flake8 Lint"
+			],
+			[
+				"intel",
+				"SublimeCodeIntel: Reset"
+			],
+			[
+				"codeintel",
+				"SublimeCodeIntel: Reset"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"build",
+				"Set Syntax: NAnt Build File"
+			],
+			[
+				"settings",
+				"Preferences: Settings - User"
+			],
+			[
+				"package",
+				"Preferences: Browse Packages"
+			],
+			[
+				"prefix",
+				"Preferences: Prefixr Key Bindings – Default"
+			],
+			[
+				"linter",
+				"Preferences: SublimeLinter Settings – User"
+			],
+			[
+				"fetch",
+				"Fetch: Manage"
+			],
+			[
+				"browse",
+				"Preferences: Browse Packages"
+			],
+			[
+				"pyt",
+				"Set Syntax: Python"
+			],
+			[
+				"insert",
+				"Gist: Insert Gist"
+			],
+			[
+				"gist",
+				"Gist: Insert Gist"
+			],
+			[
+				"javascr",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"jsh",
+				"JSHint"
+			],
+			[
+				"lorem",
+				"Snippet: Lorem ipsum"
+			],
+			[
+				"list",
+				"Package Control: List Packages"
+			],
+			[
+				"json",
+				"Set Syntax: JSON"
+			],
+			[
+				"lisdt",
+				"Preferences: SublimeLinter Settings – Default"
+			],
+			[
+				"add re",
+				"Package Control: Add Repository"
+			],
+			[
+				"open",
+				"View: Toggle Open Files in Side Bar"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"disable",
+				"Package Control: Disable Package"
+			],
+			[
+				"flake",
+				"User: Python Flake8 Lint"
+			],
+			[
+				"snippethtml",
+				"Snippet: html"
+			],
+			[
+				"html",
+				"Set Syntax: HTML"
+			],
+			[
+				"snippet",
+				"Snippet: html"
+			],
+			[
+				"css",
+				"Set Syntax: CSS"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 139.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/ac/Git/OlympianAdmin/.gitignore",
+		"/home/ac/Git/OlympianAdmin/LICENSE.md",
+		"/home/ac/Git/flask-adamcunnington.info/__init__.py",
+		"/home/ac/Git/flask-adamcunnington.info/auth.py",
+		"/home/ac/Git/flask-adamcunnington.info/setup.py",
+		"/home/ac/Git/ApprovalForm/generator.py",
+		"/home/ac/Git/LIFOrganiser/setup.py",
+		"/home/ac/Git/flask-adamcunnington.info/.sublime-project",
+		"/home/ac/Git/SCGL/.gitignore",
+		"/home/ac/Git/SCGL/scgl.php",
+		"/home/ac/Git/SCGL/LICENSE",
+		"/home/ac/Git/ApprovalForm/setup.py",
+		"/home/ac/Git/ApprovalForm/.sublime-project",
+		"/home/ac/Git/LIFOrganiser/.sublime-project.sublime-workspace",
+		"/home/ac/Git/LIFOrganiser/.sublime-project",
+		"/home/ac/Git/ApprovalForm/.gitattributes",
+		"/home/ac/Git/ApprovalForm/.gitignore",
+		"/home/ac/Git/ApprovalForm/LICENSE.md",
+		"/home/ac/Git/LIFOrganiser/LICENSE",
+		"/home/ac/Git/.py/LICENSE",
+		"/home/ac/Git/LIFOrganiser/liforganiser/__init__.py",
+		"/home/ac/Git/.default/.gitignore",
+		"/home/ac/Git/flask-adamcunnington.info/.sublime-project.sublime-workspace",
+		"/home/ac/Git/LIFOrganiser/liforganiser/encode.py",
+		"/home/ac/Git/LIFOrganiser/.git/MERGE_MSG",
+		"/home/ac/Git/LIFOrganiser/__init__.py",
+		"/home/ac/Git/URLChecker/test2.py",
+		"/home/ac/Git/LIFOrganiser/output.log",
+		"/bin/ls",
+		"/home/ac/Git/OlympianAdmin/cstrike/addons/eventscripts/_engines/python/Lib/site-packages/esutils/weapons.py",
+		"/home/ac/Git/OlympianAdmin/cstrike/addons/eventscripts/_engines/python/Lib/site-packages/esutils/players.py",
+		"/home/ac/Git/OlympianAdmin/cstrike/addons/eventscripts/_engines/python/Lib/site-packages/esutils/messages.py",
+		"/home/ac/Git/OlympianAdmin/cstrike/addons/eventscripts/_engines/python/Lib/site-packages/esutils/commands.py",
+		"/home/ac/Git/LIFOrganiser/course_data/165.json",
+		"/home/ac/Git/URLChecker/__init__.py",
+		"/home/ac/Git/LearnItFirstOrganiser/organiser.py",
+		"/home/ac/VirtualEnvs/Generic3.4/idle",
+		"/home/ac/Git/URLChecker/test.py",
+		"/home/ac/.config/sublime-text-2/Packages/Python 3/Python3.sublime-build",
+		"/home/ac/.config/sublime-text-2/Packages/Python/Python.sublime-build",
+		"/home/ac/.config/sublime-text-2/Packages/User/Preferences.sublime-settings",
+		"/home/ac/.config/sublime-text-2/Packages/Default/Preferences.sublime-settings",
+		"/home/ac/Git/OlympianAdmin/cstrike/addons/eventscripts/_engines/python/Lib/site-packages/esutils/clients.py",
+		"/home/ac/.config/sublime-text-2/Packages/User/Package Control.sublime-settings",
+		"/home/ac/.config/sublime-text-2/Packages/Prefixr/Default (Linux).sublime-keymap",
+		"/home/ac/.config/sublime-text-2/Packages/SublimeLinter/SublimeLinter.sublime-settings",
+		"/home/ac/.config/sublime-text-2/Packages/User/SublimeLinter.sublime-settings",
+		"/home/ac/.config/sublime-text-2/Packages/User/Fetch.sublime-settings",
+		"/home/ac/.config/sublime-text-2/Packages/Package Control/Package Control.sublime-settings",
+		"/home/ac/Music/record.sh",
+		"/home/ac/Git/adamcunnington.info/update.sh",
+		"/home/ac/Git/OlympianAdmin/cstrike/addons/eventscripts/admin/mods/__init__.py",
+		"/home/ac/.config/sublime-text-2/Packages/Emmet/Emmet.sublime-settings",
+		"/home/ac/.config/sublime-text-2/Packages/AdvancedNewFile/README.md",
+		"/home/ac/.config/sublime-text-2/Packages/User/AdvancedNewFile.sublime-settings",
+		"/home/ac/.config/sublime-text-2/Packages/AdvancedNewFile/AdvancedNewFile.sublime-settings",
+		"/home/ac/.config/sublime-text-2/Packages/User/Default (Linux).sublime-keymap",
+		"/home/ac/Git/adamcunnington.info/.gitignore",
+		"/home/ac/Git/adamcunnington.info/adamcunnington.info.sublime-project",
+		"/home/ac/.config/sublime-text-2/Packages/User/Gist.sublime-settings",
+		"/home/ac/Git/adamcunnington.info/app/scripts/main.js",
+		"/home/ac/Git/adamcunnington.info/app/scripts/scroll.js",
+		"/home/ac/Git/adamcunnington.info/package.json",
+		"/home/ac/Git/adamcunnington.info/bower.json",
+		"/home/ac/Git/adamcunnington.info/adamcunnington.info.sublime-workspace",
+		"/home/ac/Dropbox/Documents/Projects/Website Development/AdamCunnington.info/styles/style.css",
+		"/home/ac/Dropbox/Documents/Projects/Website Development/AdamCunnington.info/scripts/scroll.js",
+		"/home/ac/Dropbox/Documents/Projects/Website Development/AdamCunnington.info/index.html",
+		"/home/ac/Dropbox/Documents/Projects/Website Development/AdamCunnington.info/bower.json",
+		"/home/ac/Dropbox/Documents/Projects/Website Development/AdamCunnington.info/unsupported.html",
+		"/home/ac/Dropbox/Documents/Projects/Website Development/AdamCunnington.info/package.json",
+		"/home/ac/Git/adamcunnington.info/Gruntfile.js",
+		"/home/ac/Git/adamcunnington.info/.bowerrc",
+		"/home/ac/Git/adamcunnington.info/app/index.html",
+		"/home/ac/Git/adamcunnington.info/.git/COMMIT_EDITMSG",
+		"/home/ac/Git/adamcunnington.info/README.md",
+		"/home/ac/Git/adamcunnington.info/.tmp/styles/main.css",
+		"/home/ac/Git/adamcunnington.info/index.html",
+		"/home/ac/Git/adamcunnington.info/LICENSE",
+		"/home/ac/Git/adamcunnington.info/404.html",
+		"/home/ac/Git/SCGL/options.php",
+		"/home/ac/Git/SCGL/.git/COMMIT_EDITMSG",
+		"/home/ac/Dropbox/Documents/Projects/Website Development/TeamOlympia.eu/plugins/SCGL/scgl.php",
+		"/home/ac/Dropbox/Documents/Projects/Website Development/TeamOlympia.eu/plugins/SCGL/options.php",
+		"/home/ac/Dropbox/Documents/Projects/Programming/Miscellaneous/Scrabble/scrabble.py",
+		"/home/ac/Dropbox/Documents/Projects/Programming/Miscellaneous/bible.py",
+		"/home/ac/Dropbox/Documents/Projects/Programming/Miscellaneous/bbparser.py",
+		"/home/ac/Dropbox/Documents/Projects/Programming/Miscellaneous/HarvardSouthampton.XSL",
+		"/home/ac/Dropbox/Documents/Projects/Programming/Miscellaneous/bibliography.py",
+		"/etc/fstab"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"codecs",
+			".sh",
+			"splitext",
+			"__file__",
+			"completed_",
+			"print",
+			"_level",
+			"level",
+			"_logginglevels",
+			"_level",
+			"_args",
+			"_parser",
+			"_",
+			"scrape the",
+			"_DEFAULT_LEVEL",
+			", type=int)",
+			"_transform_name",
+			"cls.",
+			"cls._trans",
+			"info",
+			".info",
+			"skipped",
+			"_Chapter",
+			"_Lesson",
+			"__logger",
+			"logger.",
+			"logging.warning",
+			"logging.debug",
+			"logging.info",
+			"logging.error",
+			"logging.critical",
+			"logging.\\w+\\(\"",
+			"logging.\\w+\\(",
+			"logging.\\w+(",
+			"logging.(debug|info|error|warning|critical)",
+			"logging.(debug|info|error|warning|critical)\\(",
+			"logging.",
+			"break",
+			"_from_url",
+			"Lesson",
+			"Chapter",
+			"Lesson",
+			"Chapter",
+			"temp_dir",
+			"BeautifulSoup",
+			"_JSON_DIR",
+			"_JSON_FILE_FORMAT",
+			"logging",
+			"from_json",
+			"from_url",
+			"chapter_src",
+			"_trans",
+			"title",
+			".add",
+			"set",
+			"path",
+			"chapter_src_path",
+			"path",
+			"_JSON_FILE_PATH_FORMAT",
+			"path",
+			"dst_dir",
+			"os.makedir",
+			"docs",
+			"pdfs",
+			"avis",
+			"length",
+			"cls._tran",
+			"self._tran",
+			"other",
+			"pdf_docs",
+			"video",
+			"document",
+			"temporary",
+			"directories",
+			"extension",
+			"extensions",
+			"\"num\"",
+			"number",
+			"character",
+			"_CHARACTER_REPLACEMENTS",
+			"destination",
+			"source",
+			"directory",
+			"cls",
+			"parse",
+			"\"",
+			"number",
+			":",
+			"^([\\w\\d\\_\\.\\s\\-]*)",
+			" Download -  You have NOT downloaded this video",
+			" -  Download -  You have NOT downloaded this video",
+			"^([\\w\\d\\_\\.\\s\\-]*)",
+			"^([\\w\\d\\_\\.\\s\\-]*)$",
+			"/l",
+			" - Download -  You have NOT downloaded this video",
+			"  ",
+			"   ",
+			"_QUERY_DELIMITER",
+			"_RESERVED_CHARACTERS",
+			"_UNSAFE_CHARACTERS",
+			"check_URL",
+			"logging",
+			"trim",
+			"\"",
+			"concat",
+			"dev/",
+			"min",
+			".min",
+			"main.css",
+			"js/",
+			"css/",
+			"app/",
+			"a"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"level",
+			"logging_levels",
+			"level",
+			"args",
+			"parser",
+			"",
+			")",
+			"_logger",
+			"_logger.",
+			"logger.warning",
+			"logger.debug",
+			"logger.info",
+			"logger.error",
+			"logger.critical",
+			"logger.",
+			"from_url",
+			"_Lesson",
+			"_Chapter",
+			"_Lesson",
+			"_Chapter",
+			"temp_dir_path",
+			"_JSON_DIR_PATH",
+			"_JSON_PATH_FORMAT",
+			"_from_json",
+			"_from_url",
+			"path",
+			".append",
+			"chapter_src",
+			"_JSON_FILE_FORMAT",
+			"os.mkdir",
+			"other_files",
+			"pdf_files",
+			"avi_files",
+			"doc",
+			"pdfs",
+			"avi",
+			"doc",
+			"temp",
+			"dirs",
+			"ext",
+			"exts",
+			"\"number\"",
+			"num",
+			"char",
+			"_CHAR_REPLACEMENTS",
+			"dst",
+			"src",
+			"dir",
+			"'",
+			"id",
+			"a",
+			"",
+			"\", ",
+			"",
+			" - ",
+			"  ",
+			"QUERY_DELIMITER",
+			"RESERVED_CHARACTERS",
+			"UNSAFE_CHARACTERS",
+			"verify_URL",
+			"'",
+			"scripts/",
+			"styles/"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 112.0
+	},
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"",
+				".sublime-project.sublime-workspace"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 998.0,
+		"selected_items":
+		[
+			[
+				"",
+				"/home/ac/Git/flask-adamcunnington.info/.sublime-project"
+			]
+		],
+		"width": 1615.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 203.0,
+	"status_bar_visible": true
+}
