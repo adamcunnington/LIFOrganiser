@@ -2,9 +2,16 @@
 
 from setuptools import setup
 
+
+def get_readme():
+    with open("README.md") as f:
+        return f.read()
+
+
 setup(name="LIFOrganiser",
       version="1.0",
       description="LearnItFirst.com Course Contents Organiser",
+      long_description=get_readme(),
       author="Adam Cunnington",
       author_email="ac@adamcunnington.info",
       license="GPLv3",
@@ -24,4 +31,6 @@ setup(name="LIFOrganiser",
           "Topic :: Education"],
       keywords="LearnItFirst Course Organiser File-Renamer",
       packages="liforganiser",
-      install_requires=["BeautifulSoup4", "requests"])
+      install_requires=[
+          "BeautifulSoup4",
+          "requests"])
